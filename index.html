@@ -29,6 +29,11 @@
                 <h2>String 57th & 9th</h2>
              </header>
 
+             <div class="option-item theme-btn">
+                <span>Dark mode</span>
+                <i class="theme-icon fas fa-moon"></i>
+            </div>
+
              <!-- CD -->
               <div class="cd">
                 <div class="cd-thumb"
@@ -106,6 +111,10 @@
         const volumeWrap = $('.volume-wrap')
         const volumeRange = $('.volume-range')
         const volumeOutput = $('.volume-output')
+
+        const optionBtn = $('.option-item')
+        const themeText = $('.theme-btn span')
+        const themeIcon = $('.theme-icon')
         const app = {
             currentIndex: 0,
             isPlaying: false,
@@ -304,6 +313,14 @@
             audio.volume = e.target.value / 100
             volumeOutput.textContent = e.target.value
         }
+
+        optionBtn.onclick = function (e) {
+            // Chuyển mode sáng tối
+                themeIcon.classList.toggle('fa-sun')
+                $('body').classList.toggle('dark')
+                themeText.textContent = themeIcon.matches('.fa-sun') ? 'Light mode' : 'Dark mode'
+                e.stopPropagation()
+            }
 
             //xu ly khi click play
             playBtn.onclick = function() {
