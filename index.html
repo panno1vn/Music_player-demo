@@ -17,6 +17,13 @@
         <!-- dashboard -->
         <div class="dashboard">
             <!-- header -->
+            <div class="btn btn-volume">
+                <i class="fas fa-volume-up"></i>
+                <div class="volume-wrap">
+                    <input type="range" class="volume-range" value="100" min="0" max="100">
+                    <p class="volume-output">100</p>
+                </div>
+            </div>
              <header>
                 <h4>Now playing:</h4>
                 <h2>String 57th & 9th</h2>
@@ -94,72 +101,77 @@
         const randomBtn = $('.btn-random')
         const repeatBtn = $('.btn-repeat')
         const playlist = $('.playlist')
+
+        const volumeBtn = $('.btn-volume')
+        const volumeWrap = $('.volume-wrap')
+        const volumeRange = $('.volume-range')
+        const volumeOutput = $('.volume-output')
         const app = {
             currentIndex: 0,
             isPlaying: false,
             isRandom: false,
             isRepeat: false,
             songs: [
-                // {
-                //     name: 'Bình yên',
-                //     singer: 'Vũ',
-                //     path: './assets/music/binhyen.mp3',
-                //     image: './assets/img/vu2.jpg'
-                // },
-                // {
-                //     name: 'Hư không',
-                //     singer: 'Kha',
-                //     path: './assets/music/HuKhong-Kha-12792565.mp3',
-                //     image: './assets/img/hukhong.jpg'
-                // },
-                // {
-                //     name: 'Những lời hứa bỏ quên',
-                //     singer: 'Vũ',
-                //     path: './assets/music/NhungLoiHuaBoQuen-ChengTaoVuDearJane-16397942.mp3',
-                //     image: './assets/img/vu1.jpg'
-                // },
-                // {
-                //     name: 'Thiên lý ơi',
-                //     singer: 'Jack 5 củ',
-                //     path: './assets/music/ThienLyOi-JackJ97-13829746.mp3',
-                //     image: './assets/img/5cu.jpg'
-                // },
-                // {
-                //     name: 'Đưa nhau đi trốn',
-                //     singer: 'Đen vâu',
-                //     path: './assets/music/duanhauditron.mp3',
-                //     image: './assets/img/den.jpg'
-                // },
-                // {
-                //     name: 'Đừng vì anh mà khóc',
-                //     singer: 'Quang Hùng MasterD',
-                //     path: './assets/music/dungvianhmakhoc.mp3',
-                //     image: './assets/img/masterd.jpg'
-                // },
-                // {
-                //     name: 'Ghé qua',
-                //     singer: 'Bạn có tài mà',
-                //     path: './assets/music/ghequa.mp3',
-                //     image: './assets/img/ghequa.jpg'
-                // },
-                // {
-                //     name: 'Mai mình xa',
-                //     singer: 'Thịnh suy',
-                //     path: './assets/music/maiminhxa.mp3',
-                //     image: './assets/img/maiminhxa.jpg'
-                // },
-                // {
-                //     name: 'Đừng làm trái tim anh đau',
-                //     singer: 'Sơn Tùng MTP',
-                //     path: './assets/music/mtp.mp3',
-                //     image: './assets/img/mtp.jpg'
-                // }, 
-                // {
-                //     name: 'Tràn bộ nhớ',
-                //     singer: 'Dương domic',
-                //     path: './assets/music/tranbonho.mp3',
-                //     image: './assets/img/duongdomic.jpg'
-                // },
+                {
+                    name: 'Bình yên',
+                    singer: 'Vũ',
+                    path: './assets/music/binhyen.mp3',
+                    image: './assets/img/vu2.jpg'
+                },
+                {
+                    name: 'Hư không',
+                    singer: 'Kha',
+                    path: './assets/music/HuKhong-Kha-12792565.mp3',
+                    image: './assets/img/hukhong.jpg'
+                },
+                {
+                    name: 'Những lời hứa bỏ quên',
+                    singer: 'Vũ',
+                    path: './assets/music/NhungLoiHuaBoQuen-ChengTaoVuDearJane-16397942.mp3',
+                    image: './assets/img/vu1.jpg'
+                },
+                {
+                    name: 'Thiên lý ơi',
+                    singer: 'Jack 5 củ',
+                    path: './assets/music/ThienLyOi-JackJ97-13829746.mp3',
+                    image: './assets/img/5cu.jpg'
+                },
+                {
+                    name: 'Đưa nhau đi trốn',
+                    singer: 'Đen vâu',
+                    path: './assets/music/duanhauditron.mp3',
+                    image: './assets/img/den.jpg'
+                },
+                {
+                    name: 'Đừng vì anh mà khóc',
+                    singer: 'Quang Hùng MasterD',
+                    path: './assets/music/dungvianhmakhoc.mp3',
+                    image: './assets/img/masterd.jpg'
+                },
+                {
+                    name: 'Ghé qua',
+                    singer: 'Bạn có tài mà',
+                    path: './assets/music/ghequa.mp3',
+                    image: './assets/img/ghequa.jpg'
+                },
+                {
+                    name: 'Mai mình xa',
+                    singer: 'Thịnh suy',
+                    path: './assets/music/maiminhxa.mp3',
+                    image: './assets/img/maiminhxa.jpg'
+                },
+                {
+                    name: 'Đừng làm trái tim anh đau',
+                    singer: 'Sơn Tùng MTP',
+                    path: './assets/music/mtp.mp3',
+                    image: './assets/img/mtp.jpg'
+                }, 
+                {
+                    name: 'Tràn bộ nhớ',
+                    singer: 'Dương domic',
+                    path: './assets/music/tranbonho.mp3',
+                    image: './assets/img/duongdomic.jpg'
+                },
                 {
                     name: 'Vừa hận vừa yêu',
                     singer: 'Trung tự',
@@ -281,6 +293,18 @@
                     cd.style.opacity = newCdWidth / cdWidth
             } 
 
+            // Bật tắt volume
+            volumeBtn.onclick = function () {
+                volumeWrap.style.display = !Boolean(volumeWrap.style.display) ? 'block' : null
+            }
+            volumeWrap.onclick = function (e) {
+            e.stopPropagation()
+            }
+            volumeRange.oninput = function (e) {
+            audio.volume = e.target.value / 100
+            volumeOutput.textContent = e.target.value
+        }
+
             //xu ly khi click play
             playBtn.onclick = function() {
                 if(_this.isPlaying) {
@@ -313,7 +337,7 @@
             }
 
             // xu ly khi tua song
-            progress.onchange = function(e) {
+            progress.oninput = function(e) { // fix dung oninput muot ma hon onchange
                 const seekTime = audio.duration / 100 * e.target.value
                 audio.currentTime = seekTime
             }

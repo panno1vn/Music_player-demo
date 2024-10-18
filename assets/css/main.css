@@ -46,6 +46,41 @@ html {
     border-bottom: 1px solid #ebebeb;
 }
 
+/* #region Volume */
+.btn-volume {
+    position: relative;
+  }
+  
+  /* .btn-volume:hover .volume-wrap {
+    display: block;
+  } */
+  
+  .volume-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: none;
+  }
+
+  .volume-wrap p {
+    position: absolute;
+    left: 0;
+    margin-left: 16px;
+  }
+  
+  .volume-range {
+    position: absolute;
+    left: 0;
+    accent-color: var(--primary-color);
+    height: 6em;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    vertical-align: bottom;
+  }
+  /* #endregion Volume */
+
+
 /* HEADER */
 header  {
     text-align: center;
